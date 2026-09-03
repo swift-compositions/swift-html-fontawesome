@@ -2,18 +2,6 @@
 
 import PackageDescription
 
-extension String {
-    static let htmlFontAwesome: Self = "HTMLFontAwesome"
-}
-
-extension Target.Dependency {
-    static var htmlFontAwesome: Self { .target(name: .htmlFontAwesome) }
-}
-
-extension Target.Dependency {
-    static var html: Self { .product(name: "HTML", package: "swift-html") }
-}
-
 let package = Package(
     name: "swift-html-fontawesome",
     platforms: [
@@ -26,8 +14,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: .htmlFontAwesome,
-            targets: [.htmlFontAwesome]
+            name: "HTMLFontAwesome",
+            targets: ["HTMLFontAwesome"]
         )
     ],
     dependencies: [
@@ -35,21 +23,18 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: .htmlFontAwesome,
+            name: "HTMLFontAwesome",
             dependencies: [
-                .html
+                .product(name: "HTML", package: "swift-html")
             ]
         ),
         .testTarget(
-            name: .htmlFontAwesome.tests,
+            name: "HTMLFontAwesome Tests",
             dependencies: [
-                .htmlFontAwesome
+                .target(name: "HTMLFontAwesome")
             ]
         ),
     ],
     swiftLanguageModes: [.v6]
 )
 
-extension String {
-    var tests: Self { "\(self) Tests" }
-}
