@@ -18,7 +18,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-compositions/swift-html.git", branch: "main")
+        .package(url: "https://github.com/swift-atoms/swift-byte.git", branch: "main"),
+        .package(url: "https://github.com/swift-compositions/swift-html.git", branch: "main"),
     ],
     targets: [
         .target(
@@ -30,10 +31,10 @@ let package = Package(
         .testTarget(
             name: "HTMLFontAwesome Tests",
             dependencies: [
-                .target(name: "HTMLFontAwesome")
+                .product(name: "Byte", package: "swift-byte"),
+                .target(name: "HTMLFontAwesome"),
             ]
         ),
     ],
     swiftLanguageModes: [.v6]
 )
-

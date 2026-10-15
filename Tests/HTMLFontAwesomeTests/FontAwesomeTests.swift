@@ -1,3 +1,4 @@
+import Byte
 import Foundation
 import HTML
 import Testing
@@ -6,7 +7,7 @@ import Testing
 
 extension HTML.View {
     func renderString() -> String {
-        String(decoding: [UInt8](self), as: UTF8.self)
+        String(decoding: [Byte](self), as: UTF8.self)
     }
 }
 
